@@ -4,7 +4,7 @@ import Home from '../pages/Home'
 
 const MainLayout = ( ) => {
   return (
-    <div className='bg-black text-white md:px-28 overflow-hidden'>
+    <div className='bg-black text-white overflow-hidden'>
         <Navbar/>
         <Home/>
         <Footer/>

@@ -64,7 +64,7 @@ const Specialities = () => {
         {specialties.map((specialty) => (
           <div
             key={specialty.id}
-            className="p-6 rounded-lg bg-gradient-to-b from-[#0E0E10] to-[#17171A] shadow-lg flex flex-col items-center text-center"
+            className="p-6 rounded-lg bg-gradient-to-r from-[#0E0E10] to-black shadow-lg flex flex-col items-center text-center"
           >
             <span className="p-4 text-4xl text-customBlue">
               {specialty.icon}

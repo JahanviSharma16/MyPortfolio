@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 const Hero = () => {
   return (
-    <div className="w-full h-full py-[8rem] md:py-32 text-center">
+    <div className="w-full h-full py-[8rem] md:py-52 text-center">
     <h1 className="text-white xl:text-[64px] md:text-5xl text-4xl font-semibold text-center">
       {/* <span className="text-customBlue">Web Developer: </span> */}
       <span className="text-gray-300">Crafting Seamless </span>

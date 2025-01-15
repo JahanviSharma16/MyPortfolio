@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="p-6 bg-opacity-44">
+    <nav className="p-6 md:px-28 bg-gradient-to-t from-[#0E0E10] to-black fixed w-full">
       <div className="flex items-center justify-between">
         <h1>Developer</h1>
         <ul className="flex items-center gap-10">
