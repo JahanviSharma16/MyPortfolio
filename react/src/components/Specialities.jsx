@@ -9,45 +9,46 @@ const Specialities = () => {
       id: 1,
       heading: "Frontend Development",
       description:
-        "From crafting pixel-perfect user interfaces to implementing dynamic client-side functionalities, I leverage the latest technologies like React and Vue to create engaging web experiences.",
+        "Crafting dynamic user interfaces with React and Vue, ensuring responsive and engaging user experiences.",
       icon: <FaReact />,
     },
     {
       id: 2,
       heading: "Backend Development",
       description:
-        "Behind every successful application lies a reliable backend. I specialize in designing scalable server-side architectures using Node.js and Django, ensuring seamless integration with frontend systems.",
+        "Building scalable server-side architectures using Node.js and Django for seamless data handling.",
       icon: <FaNode />,
     },
     {
       id: 3,
       heading: "Database Management",
       description:
-        "Managing data efficiently is crucial. I utilize SQL and NoSQL databases to design robust data schemas, optimize queries, and ensure data integrity and performance.",
+        "Designing efficient SQL and NoSQL schemas to optimize queries and maintain data integrity.",
       icon: <FaDatabase />,
     },
     {
       id: 4,
       heading: "API Development & Collaboration",
       description:
-        "I thrive in creating robust APIs that facilitate seamless communication between different systems. My experience includes integrating third-party services and ensuring API security and scalability.",
+        "Creating secure and robust APIs for system communication and integrating third-party services.",
       icon: <MdApi />,
     },
     {
       id: 5,
       heading: "Full Stack Development",
       description:
-        "Bridging the gap between frontend and backend, I specialize in full-stack development, delivering end-to-end solutions that encompass both client-side interactions and server-side operations.",
+        "Delivering end-to-end solutions by bridging frontend and backend for cohesive applications.",
       icon: <RiNodeTree />,
     },
     {
       id: 6,
       heading: "Tool Bots",
       description:
-        "Automating routine tasks with custom bots streamlines workflows. I develop efficient tool bots that enhance productivity by automating repetitive tasks, ensuring efficiency and consistency.",
+        "Automating workflows with custom bots to enhance productivity and minimize manual tasks.",
       icon: <FaRobot />,
     },
   ];
+  
 
   return (
     <div className="text-center">
@@ -64,7 +65,7 @@ const Specialities = () => {
         {specialties.map((specialty) => (
           <div
             key={specialty.id}
-            className="p-6 rounded-lg bg-gradient-to-r from-[#0E0E10] to-black shadow-lg flex flex-col items-center text-center"
+            className="px-6 py-4 rounded-lg bg-gradient-to-r from-[#0E0E10] to-black shadow-lg flex flex-col items-center text-center"
           >
             <span className="p-4 text-4xl text-customBlue">
               {specialty.icon}
