@@ -48,7 +48,6 @@ const Specialities = () => {
       icon: <FaRobot />,
     },
   ];
-  
 
   return (
     <div className="text-center">

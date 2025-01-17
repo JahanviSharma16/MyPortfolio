@@ -1,8 +1,5 @@
-
 const MySkills = () => {
-  return (
-    <div></div>
-  )
-}
+  return <div></div>;
+};
 
-export default MySkills
+export default MySkills;

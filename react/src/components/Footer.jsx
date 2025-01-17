@@ -16,14 +16,28 @@ const Footer = () => {
           </h3>
           <ul className="space-y-1 2xl:text-sm md:text-xs py-1">
             <li className="py-1">
-              <button className={"hover:underline"}>Betting Log</button>
+              <a href="/" className={"hover:underline"}>
+                Home
+              </a>
             </li>
             <li className="py-1">
-              <button className="hover:underline">Picks & Analysis</button>
+              <a href="/services" className="hover:underline">
+                Service
+              </a>
             </li>
             <li className="py-1">
-              <a href="/nba-spreads" className="hover:underline">
-                NBA Spreads
+              <a href="/projects" className="hover:underline">
+                Projects
+              </a>
+            </li>
+            <li className="py-1">
+              <a href="/about" className="hover:underline">
+                About
+              </a>
+            </li>
+            <li className="py-1">
+              <a href="/clients" className="hover:underline">
+                Client
               </a>
             </li>
             <li className="py-1">
@@ -31,54 +45,40 @@ const Footer = () => {
                 Contact
               </a>
             </li>
-            <li className="py-1">
-              <a href="/subscribe" className="hover:underline">
-                Subscribe
-              </a>
-            </li>
-            <li className="py-1">
-              <a href="/TermsOfUse" className="hover:underline">
-                Terms Of Use
-              </a>
-            </li>
-            <li className="py-1">
-              <a href="/PrivacyPolicy" className="hover:underline">
-                Privacy Policy
-              </a>
-            </li>
           </ul>
         </div>
 
         <div className="flex flex-col md:mt-16">
           <h3 className="font-semibold mb-2 text-md md:text-lg">
-            Follow Us On
+            Follow Me On
           </h3>
           <ul className="space-y-1 2xl:text-sm md:text-xs py-1">
             <li className="py-1">
               <a
-                href="https://twitter.com/SpreadSpotter"
+                href="https://www.linkedin.com/in/jahanvi-sharma-a6985823a/"
                 className="hover:underline"
                 target="_blank"
               >
-                Twitter
+                LinkedIn
               </a>
             </li>
             <li className="py-1">
               <a
-                href="https://www.instagram.com/spreadspotter/"
+                href="https://github.com/JahanviSharma16"
                 className="hover:underline"
                 target="_blank"
               >
-                Instagram
+                Github
               </a>
             </li>
             <li className="py-1">
               <a
-                href="https://www.facebook.com/profile.php?id=61556945684309"
+                href="https://mail.google.com/mail/?view=cm&to=jahanvisharma16@gmail.com"
                 className="hover:underline"
                 target="_blank"
+                rel="noopener noreferrer"
               >
-                Facebook
+                Email
               </a>
             </li>
           </ul>
@@ -95,7 +95,7 @@ const Footer = () => {
               href="mailto:support@spreadspotter.com"
               className="hover:underline"
             >
-             jahanvisharma16@gmail.com
+              jahanvisharma16@gmail.com
             </a>
           </p>
         </div>

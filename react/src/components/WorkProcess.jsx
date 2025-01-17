@@ -26,9 +26,7 @@ const WorkProcess = () => {
         {process.map((item, index) => (
           <div
             key={item.id}
-            className={`text-center  ${
-              index >= 3 ? "-mt-10" : ""
-            }`}
+            className={`text-center  ${index >= 3 ? "-mt-10" : ""}`}
           >
             <div className="w-[240px] h-[240px] mx-auto relative">
               <img src={triangle} alt="triangle" className="w-full h-full" />
