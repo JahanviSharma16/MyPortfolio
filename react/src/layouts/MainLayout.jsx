@@ -1,15 +1,17 @@
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import Home from '../pages/Home'
+import { Outlet } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
-const MainLayout = ( ) => {
+const MainLayout = () => {
   return (
-    <div className='bg-black text-white overflow-hidden'>
-        <Navbar/>
-        <Home/>
-        <Footer/>
+    <div className="bg-black text-white overflow-hidden">
+      <Navbar />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
     </div>
-)
-}
+  );
+};
 
-export default MainLayout
+export default MainLayout;
