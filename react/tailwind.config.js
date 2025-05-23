@@ -10,6 +10,9 @@ export default {
         customDark: "#171719",
         customBlue: "#194BFD",
         customPurple: "#AD13FB"
+      },
+      boxShadow: {
+        customShadow: "0px 0px 15px #194BFD",
       }
     },
   },

@@ -26,7 +26,7 @@ const Navbar = () => {
           </li>
         </ul>
         <Link className="px-4 py-2 rounded-full bg-gradient-to-l from-customBlue to-customPurple">
-          Discuss for Projects
+          Let's Work Together
         </Link>
       </div>
     </nav>

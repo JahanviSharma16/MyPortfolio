@@ -1,39 +1,41 @@
-import { triangle } from "../helper/images";
+import { FaReact, FaNodeJs, FaJava, FaPython } from "react-icons/fa";
+import { SiC, SiCplusplus, SiMongodb, SiFfmpeg, SiStrapi, SiApollographql, SiExpress, SiMysql } from "react-icons/si";
 
-const process = [
-  { id: 1, title: "Empathize" },
-  { id: 2, title: "Define" },
-  { id: 3, title: "Ideate" },
-  { id: 4, title: "Prototype" },
-  { id: 5, title: "Qualitative Test" },
-  { id: 6, title: "Quantitative Test" },
+const techStack = [
+  { icon: <SiC />, label: "C" },
+  { icon: <SiCplusplus />, label: "C++" },
+  { icon: <FaPython />, label: "Python" },
+  { icon: <FaJava />, label: "Java" },
+  { icon: <FaReact />, label: "React.js" },
+  { icon: <FaNodeJs />, label: "Node.js" },
+  { icon: <SiMongodb />, label: "MongoDB" },
+  { icon: <SiExpress />, label: "Express.js" },
+  { icon: <SiStrapi />, label: "Strapi" },
+  { icon: <SiMysql />, label: "MySQL" },
 ];
 
-const WorkProcess = () => {
+const AboutMe = () => {
   return (
-    <div className="text-center py-10">
-      <p className="text-gray-400">ABOUT ME</p>
-      <h1 className="text-white text-4xl py-3">
-        My <span className="text-customBlue">work process</span>
+    <div className="text-center py-16 h-screen">
+      {/* 🔹 Section Title */}
+      <p className="text-gray-400 tracking-widest uppercase">ABOUT ME</p>
+      <h1 className="text-white text-5xl font-semibold py-3">
+        A Passionate <span className="text-customBlue">Full-Stack Developer</span>
       </h1>
-      <p className="text-gray-400 w-[50%] mx-auto">
-        As a seasoned developer, I excel in various domains, ensuring robust
-        solutions tailored to meet diverse challenges. Here is how I can
-        contribute:
+
+      {/* 🔹 Introduction */}
+      <p className="text-gray-400 w-[60%] mx-auto text-lg leading-8 pt-6 pb-16">
+        I specialize in **building interactive UIs, scalable APIs, and dynamic web applications**. 
+        With expertise in **React, MERN Stack, FFmpeg, and Strapi**, I develop high-performance 
+        solutions tailored to modern needs.
       </p>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-16 mt-8 px-32">
-        {process.map((item, index) => (
-          <div
-            key={item.id}
-            className={`text-center  ${index >= 3 ? "-mt-10" : ""}`}
-          >
-            <div className="w-[240px] h-[240px] mx-auto relative">
-              <img src={triangle} alt="triangle" className="w-full h-full" />
-              <p className="absolute inset-0 flex items-center justify-center text-white text-sm">
-                {item.title}
-              </p>
-            </div>
+      {/* 🔹 Skills & Tech Stack */}
+      <div className="flex flex-wrap justify-center gap-6 text-white text-lg py-6">
+        {techStack.map((tech, index) => (
+          <div key={index} className="flex flex-col items-center text-gray-300">
+            <div className="p-4 bg-gray-800 rounded-full text-4xl">{tech.icon}</div>
+            <p className="text-sm mt-2">{tech.label}</p>
           </div>
         ))}
       </div>
@@ -41,4 +43,4 @@ const WorkProcess = () => {
   );
 };
 
-export default WorkProcess;
+export default AboutMe;

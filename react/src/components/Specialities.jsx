@@ -60,11 +60,11 @@ const Specialities = () => {
         solutions tailored to meet diverse challenges. Here is how I can
         contribute:
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 ">
         {specialties.map((specialty) => (
           <div
             key={specialty.id}
-            className="px-6 py-4 rounded-lg bg-gradient-to-r from-[#0E0E10] to-black shadow-lg flex flex-col items-center text-center"
+            className="px-6 py-4 rounded-lg bg-gradient-to-r from-[#0E0E10] to-black shadow-lg flex flex-col items-center text-center transition duration-300 hover:shadow-[0_0_30px_#194BFD]"
           >
             <span className="p-4 text-4xl text-customBlue">
               {specialty.icon}

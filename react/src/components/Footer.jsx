@@ -73,7 +73,7 @@ const Footer = () => {
             </li>
             <li className="py-1">
               <a
-                href="https://mail.google.com/mail/?view=cm&to=jahanvisharma16@gmail.com"
+                href="https://mail.google.com/mail/?view=cm&to=jahanvisharma932@gmail.com"
                 className="hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -95,7 +95,7 @@ const Footer = () => {
               href="mailto:support@spreadspotter.com"
               className="hover:underline"
             >
-              jahanvisharma16@gmail.com
+              jahanvisharma932@gmail.com
             </a>
           </p>
         </div>
