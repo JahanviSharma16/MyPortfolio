@@ -1,49 +1,95 @@
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { image, img2, img3 } from "../helper/images";
+import { image, img2, img3 } from "../helper/images"; // example placeholders
 
 const projectDetails = [
   {
     id: 1,
-    title: "Place to Stay",
+    title: "LifeSkillify",
     description:
-      "A MERN stack website for booking accommodations with user-friendly search and booking features.",
-    images: [image, img2, img3],
+      "A full-stack learning platform offering daily life skills lessons with user authentication and responsive UI.",
+    images: [
+      require("../assets/images/lifeskillify/first.png"),
+      require("../assets/images/lifeskillify/second.png"),
+      require("../assets/images/lifeskillify/third.png"),
+    ],
+    host_link: "https://life-skillify.vercel.app/",
   },
   {
     id: 2,
-    title: "Video Subtitle Animator",
+    title: "Place to Stay",
     description:
-      "A React JS app that overlays and animates subtitles on videos with editing options.",
-    images: ["/images/video1.png", "/images/video2.png", "/images/video3.png"],
+      "A MERN stack website for booking accommodations with filtering, real-time bookings, and reviews.",
+    images: [image, img2, img3],
+    host_link: "https://place-to-stay.netlify.app/",
   },
   {
     id: 3,
     title: "Bubble Game",
     description:
-      "A fun game built with HTML, CSS, and JS where the player must choose the right number.",
-    images: ["/images/game1.png", "/images/game2.png"],
+      "A number-matching game built using HTML, CSS, and JavaScript to enhance user reflex and fun.",
+    images: [
+      require("../assets/images/bubblegame/first.png"),
+      require("../assets/images/bubblegame/second.png"),
+      require("../assets/images/bubblegame/third.png"),
+    ],
+    host_link: "https://jahanvisharma16.github.io/BubbleGame/",
+  },
+  {
+    id: 4,
+    title: "Image Search",
+    description:
+      "A React-based app using an image API to search and display images in real-time.",
+    images: [
+      require("../assets/images/imageSearch/first.png"),
+      require("../assets/images/imageSearch/second.png"),
+      require("../assets/images/imageSearch/third.png"),
+    ],
+    host_link: "https://jahanvisharma16.github.io/Image_search/",
+  },
+  {
+    id: 5,
+    title: "Weather App",
+    description:
+      "A simple weather forecast app using OpenWeather API to display current weather by location.",
+    images: [
+      require("../assets/images/weatherApp/first.png"),
+      require("../assets/images/weatherApp/second.png"),
+      require("../assets/images/weatherApp/third.png"),
+    ],
+    host_link: "https://jahanvisharma16.github.io/WeatherApp/",
+  },
+  {
+    id: 6,
+    title: "Amazon Clone",
+    description:
+      "A static replica of Amazon's homepage with styled components, sections, and responsive design.",
+    images: [
+      require("../assets/images/amazon/first.png"),
+      require("../assets/images/amazon/second.png"),
+      require("../assets/images/amazon/third.png"),
+    ],
+    host_link: "https://jahanvisharma16.github.io/AmazonClone/",
   },
 ];
 
 const CompletedProjects = () => {
   return (
-    <div className="text-center py-10">
-      <p className="text-gray-400">PORTFOLIO</p>
-      <h1 className="text-white text-4xl py-3">
-        My <span className="text-customBlue">projects</span>
+    <div className="text-center py-10 px-4 sm:px-8 md:px-12 lg:px-20">
+      <p className="text-gray-400 uppercase">Portfolio</p>
+      <h1 className="text-white text-4xl font-bold py-3">
+        My <span className="text-customBlue">Projects</span>
       </h1>
-      <p className="text-gray-400 w-[90%] md:w-[50%] mx-auto">
+      <p className="text-gray-400 max-w-2xl mx-auto">
         As a seasoned developer, I excel in various domains, ensuring robust
-        solutions tailored to meet diverse challenges. Here is how I can
-        contribute:
+        solutions tailored to meet diverse challenges. Here’s how I can contribute:
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6 py-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pt-10">
         {projectDetails.map((project) => (
           <div
             key={project.id}
-            className="bg-gradient-to-r from-[#0E0E10] to-black rounded-xl shadow-lg p-5 text-white flex flex-col items-center transition duration-300 hover:shadow-[0_0_30px_#194BFD]"
+            className="bg-gradient-to-r from-[#0E0E10] to-black rounded-xl shadow-lg p-5 text-white flex flex-col items-center hover:shadow-[0_0_30px_#194BFD] transition duration-300"
           >
             <div className="w-full h-52 rounded overflow-hidden">
               <Carousel
@@ -52,25 +98,32 @@ const CompletedProjects = () => {
                 infiniteLoop
                 autoPlay
                 interval={3000}
+                className="rounded"
+                ariaLabel={`Screenshots of ${project.title}`}
               >
                 {project.images.map((img, index) => (
-                  <div key={index}>
-                    <div className="relative w-full h-52 rounded overflow-hidden">
-                      <img
-                        src={img}
-                        alt={`${project.title} screenshot ${index + 1}`}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-90"></div>
-                    </div>
+                  <div key={index} className="relative w-full h-52">
+                    <img
+                      src={img}
+                      alt={`${project.title} screenshot ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 ))}
               </Carousel>
             </div>
-            <h3 className="text-2xl font-bold mt-4 text-customBlue">
+            <h3 className="text-2xl font-semibold mt-4 text-customBlue">
               {project.title}
             </h3>
             <p className="text-gray-400 mt-2 text-sm">{project.description}</p>
+            <a
+              href={project.host_link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-block px-4 py-2 bg-customBlue text-white rounded-lg hover:bg-blue-600 transition duration-200"
+            >
+              Visit Project
+            </a>
           </div>
         ))}
       </div>

@@ -6,7 +6,7 @@ import WorkProcess from "../components/WorkProcess";
 
 const Home = () => {
   return (
-    <div className="md:px-28 ">
+    <div className="px-4 sm:px-8 md:px-16 lg:px-28 max-w-screen-2xl mx-auto space-y-16">
       <Hero />
       <Specialities />
       <WorkProcess />

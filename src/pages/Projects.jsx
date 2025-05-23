@@ -1,7 +1,10 @@
+import CompletedProjects from "../components/CompletedProjects"
 
 const Projects = () => {
   return (
-    <div>Projects</div>
+    <div>
+      <CompletedProjects />
+    </div>
   )
 }
 

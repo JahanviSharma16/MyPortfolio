@@ -1,7 +1,8 @@
+import Specialities from "../components/Specialities"
 
 const Services = () => {
   return (
-    <div>Services</div>
+    <div> <Specialities /></div>
   )
 }
 
