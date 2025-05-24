@@ -1,18 +1,38 @@
-import CompletedProjects from "../components/CompletedProjects";
+import { useEffect, useRef } from "react";
 import Hero from "../components/Hero";
-import MySkills from "../components/MySkills";
 import Specialities from "../components/Specialities";
+import CompletedProjects from "../components/CompletedProjects";
 import WorkProcess from "../components/WorkProcess";
+import Contact from "./Contact";
+import { useOutletContext } from "react-router-dom";
 
 const Home = () => {
+   const { services, projects, about } = useOutletContext();
+
+  useEffect(() => {
+    const target = localStorage.getItem("scrollTo");
+    if (target) {
+      const refs = { services, projects, about };
+      refs[target]?.current?.scrollIntoView({ behavior: "smooth" });
+      localStorage.removeItem("scrollTo");
+    }
+  }, []);
+
   return (
-    <div className="px-4 sm:px-8 md:px-16 lg:px-28 max-w-screen-2xl mx-auto space-y-16">
+    <>
+      {/* Pass refs to Hero if needed */}
       <Hero />
-      <Specialities />
-      <WorkProcess />
-      <MySkills />
-      <CompletedProjects />
-    </div>
+   <div ref={services}>
+        <Specialities />
+      </div>
+      <div ref={projects}>
+        <CompletedProjects />
+      </div>
+   <div ref={about}>
+        <WorkProcess />
+      </div>
+      <Contact />
+    </>
   );
 };
 

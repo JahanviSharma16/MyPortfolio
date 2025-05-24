@@ -1,82 +1,76 @@
-const Footer = () => {
-  return (
-    <footer className="md:px-28  bg-gradient-to-b from-[#0E0E10] to-black text-grey py-8 font-BaiJamjureeRegular pl-[5%] pr-[5%]">
-      <div className="grid grid-cols-1 md:grid-cols-5 2xl:gap-8 lg:gap-4 md:gap-6">
-        <div className="2xl:pt-[8%] lg:pt-[18%] md:pt-[30%] md:pb-0 pb-5">
-          {/* <img
-            src={logoo}
-            alt=""
-            className="2xl:h-20 lg:h-16 md:h-14 h-16 w-auto"
-          /> */}
-        </div>
+import { useLocation, useNavigate } from "react-router-dom";
 
-        <div className="flex flex-col md:mt-16">
-          <h3 className="font-semibold mb-2 text-md md:text-lg">
-            Quick Access
-          </h3>
-          <ul className="space-y-1 2xl:text-sm md:text-xs py-1">
-            <li className="py-1">
-              <a href="/" className={"hover:underline"}>
-                Home
-              </a>
-            </li>
-            <li className="py-1">
-              <a href="/services" className="hover:underline">
-                Service
-              </a>
-            </li>
-            <li className="py-1">
-              <a href="/projects" className="hover:underline">
-                Projects
-              </a>
-            </li>
-            <li className="py-1">
-              <a href="/about" className="hover:underline">
-                About
-              </a>
-            </li>
-            <li className="py-1">
-              <a href="/clients" className="hover:underline">
-                Client
-              </a>
-            </li>
-            <li className="py-1">
-              <a href="/contact" className="hover:underline">
-                Contact
-              </a>
-            </li>
+const Footer = ({ scrollRefs }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleScroll = (refKey) => {
+    if (location.pathname !== "/") {
+      localStorage.setItem("scrollTo", refKey);
+      navigate("/");
+    } else {
+      scrollRefs[refKey]?.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <footer className="bg-gradient-to-b from-[#0E0E10] to-black text-gray-300 px-6 md:px-20 lg:px-28 py-10 font-BaiJamjureeRegular">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+        <div>
+          <h3 className="font-semibold mb-3 text-lg">Quick Access</h3>
+          <ul className="space-y-2 text-sm">
+            {[
+              { name: "Home", key: "home" },
+              { name: "Service", key: "services" },
+              { name: "Projects", key: "projects" },
+              { name: "About", key: "about" },
+              { name: "Contact", link: "/contact" },
+            ].map((item, idx) => (
+              <li key={idx}>
+                {item.link ? (
+                  <a href={item.link} className="hover:underline">
+                    {item.name}
+                  </a>
+                ) : (
+                  <button
+                    onClick={() => handleScroll(item.key)}
+                    className="hover:underline text-left"
+                  >
+                    {item.name}
+                  </button>
+                )}
+              </li>
+            ))}
           </ul>
         </div>
 
-        <div className="flex flex-col md:mt-16">
-          <h3 className="font-semibold mb-2 text-md md:text-lg">
-            Follow Me On
-          </h3>
-          <ul className="space-y-1 2xl:text-sm md:text-xs py-1">
-            <li className="py-1">
+        <div>
+          <h3 className="font-semibold mb-3 text-lg">Follow Me On</h3>
+          <ul className="space-y-2 text-sm">
+            <li>
               <a
                 href="https://www.linkedin.com/in/jahanvi-sharma-a6985823a/"
-                className="hover:underline"
                 target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
               >
                 LinkedIn
               </a>
             </li>
-            <li className="py-1">
+            <li>
               <a
                 href="https://github.com/JahanviSharma16"
-                className="hover:underline"
                 target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
               >
                 Github
               </a>
             </li>
-            <li className="py-1">
+            <li>
               <a
-                href="https://mail.google.com/mail/?view=cm&to=jahanvisharma932@gmail.com"
+                href="mailto:jahanvisharma16@gmail.com"
                 className="hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 Email
               </a>
@@ -84,24 +78,26 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className="flex flex-col md:col-span-2 md:mt-16">
-          <p className="2xl:text-md md:text-sm">
+        <div className="md:col-span-2">
+          <p className="text-sm leading-relaxed">
             Delivering top-notch websites, interactive UI/UX designs, and
             scalable applications using modern frameworks like React, Node.js,
             and more.
           </p>
-          <p className="mt-2 2xl:text-md md:text-sm py-4">
+          <p className="mt-4 text-sm">
             <a
-              href="mailto:support@spreadspotter.com"
+              href="mailto:jahanvisharma16@gmail.com"
               className="hover:underline"
             >
-              jahanvisharma932@gmail.com
+              jahanvisharma16@gmail.com
             </a>
           </p>
+          <p className="mt-2 text-sm hover:underline">+91 8218512192</p>
         </div>
       </div>
-      <div className="text-center mt-6 text-xs md:text-xs">
-        © 2025 Web Developer All rights reserved.
+
+      <div className="text-center text-xs mt-10 border-t border-gray-700 pt-4">
+        © 2025 Web Developer. All rights reserved.
       </div>
     </footer>
   );

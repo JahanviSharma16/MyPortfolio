@@ -1,6 +1,25 @@
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { image, img2, img3 } from "../helper/images"; // example placeholders
+import {
+  amazon1,
+  amazon2,
+  amazon3,
+  bubble1,
+  bubble2,
+  bubble3,
+  image,
+  img2,
+  img3,
+  imgsearch1,
+  imgsearch2,
+  imgsearch3,
+  life1,
+  life2,
+  life3,
+  weather1,
+  weather2,
+  weather3,
+} from "../helper/images"; // example placeholders
 
 const projectDetails = [
   {
@@ -8,11 +27,7 @@ const projectDetails = [
     title: "LifeSkillify",
     description:
       "A full-stack learning platform offering daily life skills lessons with user authentication and responsive UI.",
-    images: [
-      require("../assets/images/lifeskillify/first.png"),
-      require("../assets/images/lifeskillify/second.png"),
-      require("../assets/images/lifeskillify/third.png"),
-    ],
+    images: [life1, life2, life3],
     host_link: "https://life-skillify.vercel.app/",
   },
   {
@@ -28,11 +43,7 @@ const projectDetails = [
     title: "Bubble Game",
     description:
       "A number-matching game built using HTML, CSS, and JavaScript to enhance user reflex and fun.",
-    images: [
-      require("../assets/images/bubblegame/first.png"),
-      require("../assets/images/bubblegame/second.png"),
-      require("../assets/images/bubblegame/third.png"),
-    ],
+    images: [bubble1, bubble2, bubble3],
     host_link: "https://jahanvisharma16.github.io/BubbleGame/",
   },
   {
@@ -40,11 +51,7 @@ const projectDetails = [
     title: "Image Search",
     description:
       "A React-based app using an image API to search and display images in real-time.",
-    images: [
-      require("../assets/images/imageSearch/first.png"),
-      require("../assets/images/imageSearch/second.png"),
-      require("../assets/images/imageSearch/third.png"),
-    ],
+    images: [imgsearch1, imgsearch2, imgsearch3],
     host_link: "https://jahanvisharma16.github.io/Image_search/",
   },
   {
@@ -52,11 +59,7 @@ const projectDetails = [
     title: "Weather App",
     description:
       "A simple weather forecast app using OpenWeather API to display current weather by location.",
-    images: [
-      require("../assets/images/weatherApp/first.png"),
-      require("../assets/images/weatherApp/second.png"),
-      require("../assets/images/weatherApp/third.png"),
-    ],
+    images: [weather1, weather2, weather3],
     host_link: "https://jahanvisharma16.github.io/WeatherApp/",
   },
   {
@@ -64,11 +67,7 @@ const projectDetails = [
     title: "Amazon Clone",
     description:
       "A static replica of Amazon's homepage with styled components, sections, and responsive design.",
-    images: [
-      require("../assets/images/amazon/first.png"),
-      require("../assets/images/amazon/second.png"),
-      require("../assets/images/amazon/third.png"),
-    ],
+    images: [amazon1, amazon2, amazon3],
     host_link: "https://jahanvisharma16.github.io/AmazonClone/",
   },
 ];
@@ -82,7 +81,8 @@ const CompletedProjects = () => {
       </h1>
       <p className="text-gray-400 max-w-2xl mx-auto">
         As a seasoned developer, I excel in various domains, ensuring robust
-        solutions tailored to meet diverse challenges. Here’s how I can contribute:
+        solutions tailored to meet diverse challenges. Here’s how I can
+        contribute:
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pt-10">
