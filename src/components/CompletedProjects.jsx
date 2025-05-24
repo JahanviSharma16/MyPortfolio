@@ -19,7 +19,7 @@ import {
   weather1,
   weather2,
   weather3,
-} from "../helper/images"; // example placeholders
+} from "../helper/images"; 
 
 const projectDetails = [
   {
@@ -59,7 +59,7 @@ const projectDetails = [
     title: "Weather App",
     description:
       "A simple weather forecast app using OpenWeather API to display current weather by location.",
-    images: [weather1, weather2, weather3],
+    images: [weather1, weather2, weather3 ],
     host_link: "https://jahanvisharma16.github.io/WeatherApp/",
   },
   {

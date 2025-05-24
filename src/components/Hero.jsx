@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="w-full h-full pt-40 flex flex-col items-center justify-center text-center px-4">
+    <section className="w-full h-full my-auto py-52 flex flex-col items-center justify-center text-center px-4">
       <h1 className="text-white font-semibold leading-tight">
         <span className="text-gray-300 text-3xl sm:text-4xl md:text-5xl xl:text-6xl">
           Building{" "}
