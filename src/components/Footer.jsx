@@ -92,7 +92,7 @@ const Footer = ({ scrollRefs }) => {
               jahanvisharma16@gmail.com
             </a>
           </p>
-          <p className="mt-2 text-sm hover:underline">+91 8218512192</p>
+         {/* <p className="mt-2 text-sm hover:underline">+91 8218512192</p> */}
         </div>
       </div>
 
