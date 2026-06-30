@@ -23,13 +23,14 @@ const highlights = [
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center pt-24 pb-16 lg:pb-20 overflow-hidden">
-      <div className="absolute inset-0 -z-10 hero-grid opacity-40" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-surface-muted via-surface-muted/80 to-surface-muted" />
+      <div className="absolute inset-0 -z-10 hero-grid opacity-30" />
+      <div className="absolute inset-0 -z-10 hero-glow" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-surface-muted via-surface-muted/90 to-[#F5F0E8]" />
 
       <div className="section-container w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-7" data-aos="fade-up" data-aos-duration="800">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-gold mb-5">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-highlight mb-5">
               Portfolio &mdash; {personalInfo.location}
             </p>
 
@@ -42,7 +43,7 @@ const Hero = () => {
             </h1>
 
             <div className="mt-5 flex items-center gap-3">
-              <span className="h-px w-10 bg-gold" />
+              <span className="h-px w-10 bg-highlight" />
               <p className="text-lg sm:text-xl text-ink-secondary font-medium">
                 {personalInfo.title}
               </p>
@@ -72,14 +73,14 @@ const Hero = () => {
                 href={personalInfo.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-ink-secondary hover:border-accent hover:text-accent hover:bg-accent-light transition-all duration-300"
+                className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-ink-secondary hover:border-highlight hover:text-highlight hover:bg-highlight-light transition-all duration-300"
                 aria-label="LinkedIn"
               >
                 <FaLinkedinIn className="w-4 h-4" />
               </a>
               <a
                 href={`mailto:${personalInfo.email}`}
-                className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-ink-secondary hover:border-accent hover:text-accent hover:bg-accent-light transition-all duration-300"
+                className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-ink-secondary hover:border-highlight hover:text-highlight hover:bg-highlight-light transition-all duration-300"
                 aria-label="Email"
               >
                 <HiOutlineEnvelope className="w-4 h-4" />
@@ -104,8 +105,8 @@ const Hero = () => {
                   </p>
                   <p className="text-sm text-ink-secondary mt-0.5">@ EBG Group</p>
                 </div>
-                <span className="flex items-center gap-1.5 text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-3 py-1.5 rounded-full">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                <span className="flex items-center gap-1.5 text-xs font-medium text-highlight-dark bg-highlight-light border border-highlight/25 px-3 py-1.5 rounded-full">
+                  <span className="w-1.5 h-1.5 rounded-full bg-highlight" />
                   Open to work
                 </span>
               </div>
@@ -147,7 +148,7 @@ const Hero = () => {
               </div>
 
               <div className="mt-6 flex items-center gap-2 text-sm text-ink-muted">
-                <HiOutlineMapPin className="w-4 h-4 text-gold flex-shrink-0" />
+                <HiOutlineMapPin className="w-4 h-4 text-highlight flex-shrink-0" />
                 <span>{personalInfo.location}</span>
               </div>
             </div>

@@ -6,27 +6,27 @@ export default {
       colors: {
         surface: {
           DEFAULT: "#FFFFFF",
-          muted: "#F7F5F2",
-          subtle: "#EFEBE6",
+          muted: "#FAF7F2",
+          subtle: "#F3EDE4",
         },
         ink: {
-          DEFAULT: "#141414",
-          secondary: "#5A5A5A",
-          muted: "#9A9A9A",
+          DEFAULT: "#1A1816",
+          secondary: "#5C5650",
+          muted: "#9A948C",
         },
         accent: {
-          DEFAULT: "#1A2E35",
-          light: "#E8EDEF",
-          dark: "#0F1C21",
+          DEFAULT: "#1A1816",
+          light: "#F0EBE3",
+          dark: "#0F0E0D",
         },
-        gold: {
-          DEFAULT: "#B8956A",
-          light: "#F5F0E8",
-          dark: "#96784F",
+        highlight: {
+          DEFAULT: "#B8945F",
+          light: "#F7F0E4",
+          dark: "#947648",
         },
         border: {
-          DEFAULT: "#E5E0DA",
-          light: "#F0ECE7",
+          DEFAULT: "#E5DDD3",
+          light: "#EFE9E1",
         },
       },
       fontFamily: {
@@ -34,15 +34,16 @@ export default {
         display: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        card: "0 1px 2px 0 rgb(20 20 20 / 0.04), 0 4px 16px -2px rgb(20 20 20 / 0.06)",
+        card: "0 1px 2px 0 rgb(26 24 22 / 0.03), 0 8px 28px -4px rgb(26 24 22 / 0.07)",
         "card-hover":
-          "0 8px 32px -4px rgb(20 20 20 / 0.1), 0 2px 8px -2px rgb(20 20 20 / 0.04)",
-        nav: "0 1px 0 0 rgb(20 20 20 / 0.06)",
-        hero: "0 24px 64px -12px rgb(20 20 20 / 0.12)",
+          "0 16px 48px -12px rgb(26 24 22 / 0.12), 0 4px 16px -4px rgb(184 148 95 / 0.08)",
+        nav: "0 1px 0 0 rgb(26 24 22 / 0.05)",
+        hero: "0 28px 72px -16px rgb(26 24 22 / 0.14)",
       },
       animation: {
         "fade-up": "fadeUp 0.7s ease-out forwards",
         "fade-in": "fadeIn 0.9s ease-out 0.2s forwards",
+        "fade-in-short": "fadeInShort 0.35s ease-out forwards",
       },
       keyframes: {
         fadeUp: {
@@ -52,6 +53,10 @@ export default {
         fadeIn: {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
+        },
+        fadeInShort: {
+          "0%": { opacity: "0", transform: "translateY(8px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
         },
       },
     },

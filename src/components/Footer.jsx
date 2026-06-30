@@ -26,15 +26,15 @@ const Footer = ({ scrollRefs }) => {
   };
 
   return (
-    <footer className="bg-ink text-white" data-aos="fade-up">
+    <footer className="bg-accent text-white" data-aos="fade-up">
       <div className="section-container py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="lg:col-span-2">
             <h3 className="text-xl font-bold">
               {personalInfo.firstName}
-              <span className="text-gold">.</span>
+              <span className="text-highlight">.</span>
             </h3>
-            <p className="mt-3 text-sm text-slate-400 leading-relaxed max-w-md">
+            <p className="mt-3 text-sm text-white/50 leading-relaxed max-w-md">
               {personalInfo.title} building scalable MERN applications, AI-powered
               solutions, and workflow automation. Based in {personalInfo.location}.
             </p>
@@ -43,7 +43,7 @@ const Footer = ({ scrollRefs }) => {
                 href={personalInfo.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-gold/80 transition-colors"
+                className="w-9 h-9 rounded-lg bg-white/8 flex items-center justify-center text-white/70 hover:bg-highlight hover:text-accent transition-colors"
                 aria-label="LinkedIn"
               >
                 <FaLinkedinIn className="w-4 h-4" />
@@ -52,14 +52,14 @@ const Footer = ({ scrollRefs }) => {
                 href={personalInfo.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-gold/80 transition-colors"
+                className="w-9 h-9 rounded-lg bg-white/8 flex items-center justify-center text-white/70 hover:bg-highlight hover:text-accent transition-colors"
                 aria-label="GitHub"
               >
                 <FaGithub className="w-4 h-4" />
               </a>
               <a
                 href={`mailto:${personalInfo.email}`}
-                className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-gold/80 transition-colors"
+                className="w-9 h-9 rounded-lg bg-white/8 flex items-center justify-center text-white/70 hover:bg-highlight hover:text-accent transition-colors"
                 aria-label="Email"
               >
                 <HiOutlineEnvelope className="w-4 h-4" />
@@ -68,7 +68,7 @@ const Footer = ({ scrollRefs }) => {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4">
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-white/40 mb-4">
               Navigation
             </h4>
             <ul className="space-y-2.5">
@@ -76,7 +76,7 @@ const Footer = ({ scrollRefs }) => {
                 <li key={item.key}>
                   <button
                     onClick={() => handleScroll(item.key)}
-                    className="text-sm text-slate-300 hover:text-white transition-colors"
+                    className="text-sm text-white/65 hover:text-highlight transition-colors"
                   >
                     {item.name}
                   </button>
@@ -85,7 +85,7 @@ const Footer = ({ scrollRefs }) => {
               <li>
                 <Link
                   to="/contact"
-                  className="text-sm text-slate-300 hover:text-white transition-colors"
+                  className="text-sm text-white/65 hover:text-highlight transition-colors"
                 >
                   Contact
                 </Link>
@@ -94,28 +94,28 @@ const Footer = ({ scrollRefs }) => {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4">
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-white/40 mb-4">
               Contact
             </h4>
-            <ul className="space-y-3 text-sm text-slate-300">
+            <ul className="space-y-3 text-sm text-white/65">
               <li>
                 <a
                   href={`mailto:${personalInfo.email}`}
-                  className="flex items-center gap-2 hover:text-white transition-colors"
+                  className="flex items-center gap-2 hover:text-highlight transition-colors"
                 >
-                  <HiOutlineEnvelope className="w-4 h-4 text-gold" />
+                  <HiOutlineEnvelope className="w-4 h-4 text-highlight" />
                   {personalInfo.email}
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <HiOutlinePhone className="w-4 h-4 text-gold" />
+                <HiOutlinePhone className="w-4 h-4 text-highlight" />
                 {personalInfo.phone}
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-white/10 text-center text-xs text-slate-500">
+        <div className="mt-12 pt-6 border-t border-white/10 text-center text-xs text-white/35">
           &copy; {new Date().getFullYear()} {personalInfo.name}. All rights reserved.
         </div>
       </div>

@@ -40,7 +40,7 @@ const About = () => {
             <p className="section-label">About Me</p>
             <h2 className="section-title">
               Passionate{" "}
-              <span className="text-gold">Full Stack Developer</span>
+              <span className="text-highlight">Full Stack Developer</span>
             </h2>
             <p className="mt-6 text-ink-secondary text-base leading-relaxed">
               {summary}
@@ -68,11 +68,11 @@ const About = () => {
               {techStack.map((tech, index) => (
                 <div
                   key={tech.label}
-                  className="flex flex-col items-center gap-2 p-4 rounded-xl bg-surface-subtle border border-border-light hover:border-accent/20 hover:bg-accent-light/50 transition-all duration-200"
+                  className="flex flex-col items-center gap-2 p-4 rounded-xl bg-surface-subtle border border-border-light hover:border-highlight/30 hover:bg-highlight-light/60 transition-all duration-200"
                   data-aos="zoom-in"
                   data-aos-delay={index * 60}
                 >
-                  <span className="text-2xl text-accent">{tech.icon}</span>
+                  <span className="text-2xl text-highlight">{tech.icon}</span>
                   <span className="text-xs font-medium text-ink-secondary text-center">
                     {tech.label}
                   </span>

@@ -112,7 +112,7 @@ const ContactFormHelper = () => {
             maxLength="50"
             value={formData.name}
             onChange={handleChange}
-            className="w-full px-4 py-2.5 bg-surface-subtle border border-border rounded-xl text-ink text-sm placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-colors"
+            className="w-full px-4 py-2.5 bg-surface-subtle border border-border rounded-xl text-ink text-sm placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-highlight/25 focus:border-highlight transition-colors"
             required
           />
           {errors.name && (
@@ -135,7 +135,7 @@ const ContactFormHelper = () => {
             maxLength="55"
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-2.5 bg-surface-subtle border border-border rounded-xl text-ink text-sm placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-colors"
+            className="w-full px-4 py-2.5 bg-surface-subtle border border-border rounded-xl text-ink text-sm placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-highlight/25 focus:border-highlight transition-colors"
             required
           />
           {errors.email && (
@@ -157,7 +157,7 @@ const ContactFormHelper = () => {
             value={formData.help}
             onChange={handleChange}
             rows={5}
-            className="w-full px-4 py-2.5 bg-surface-subtle border border-border rounded-xl text-ink text-sm placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-colors resize-none"
+            className="w-full px-4 py-2.5 bg-surface-subtle border border-border rounded-xl text-ink text-sm placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-highlight/25 focus:border-highlight transition-colors resize-none"
             required
           />
           {errors.help && (

@@ -47,10 +47,10 @@ const Navbar = ({ scrollRefs }) => {
       <div className="section-container py-4 flex items-center justify-between">
         <button
           onClick={() => handleScroll("home")}
-          className="text-lg font-bold text-ink hover:text-accent transition-colors"
+          className="text-lg font-bold text-ink hover:text-highlight transition-colors"
         >
           {personalInfo.firstName}
-          <span className="text-gold">.</span>
+          <span className="text-highlight">.</span>
         </button>
 
         <button
@@ -67,14 +67,14 @@ const Navbar = ({ scrollRefs }) => {
               {item.isRoute ? (
                 <Link
                   to="/contact"
-                  className="text-sm font-medium text-ink-secondary hover:text-accent transition-colors"
+                  className="text-sm font-medium text-ink-secondary hover:text-highlight transition-colors"
                 >
                   {item.label}
                 </Link>
               ) : (
                 <button
                   onClick={() => handleScroll(item.key)}
-                  className="text-sm font-medium text-ink-secondary hover:text-accent transition-colors"
+                  className="text-sm font-medium text-ink-secondary hover:text-highlight transition-colors"
                 >
                   {item.label}
                 </button>
@@ -97,14 +97,14 @@ const Navbar = ({ scrollRefs }) => {
                   <Link
                     to="/contact"
                     onClick={() => setIsOpen(false)}
-                    className="block py-2.5 text-sm font-medium text-ink-secondary hover:text-accent"
+                    className="block py-2.5 text-sm font-medium text-ink-secondary hover:text-highlight"
                   >
                     {item.label}
                   </Link>
                 ) : (
                   <button
                     onClick={() => handleScroll(item.key)}
-                    className="block w-full text-left py-2.5 text-sm font-medium text-ink-secondary hover:text-accent"
+                    className="block w-full text-left py-2.5 text-sm font-medium text-ink-secondary hover:text-highlight"
                   >
                     {item.label}
                   </button>

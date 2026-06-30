@@ -14,7 +14,7 @@
   }
 
   ::selection {
-    @apply bg-gold/30 text-ink;
+    @apply bg-highlight/20 text-ink;
   }
 }
 
@@ -24,7 +24,7 @@
   }
 
   .section-label {
-    @apply text-[11px] font-semibold uppercase tracking-[0.25em] text-gold mb-3;
+    @apply text-[11px] font-semibold uppercase tracking-[0.25em] text-highlight mb-3;
   }
 
   .section-title {
@@ -36,7 +36,7 @@
   }
 
   .card-hover {
-    @apply hover:shadow-card-hover hover:border-gold/30 hover:-translate-y-0.5;
+    @apply hover:shadow-card-hover hover:border-highlight/25 hover:-translate-y-0.5;
   }
 
   .btn-primary {
@@ -49,7 +49,7 @@
   .btn-secondary {
     @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full
            bg-surface text-ink font-medium text-sm border border-border
-           hover:border-accent/20 hover:bg-surface-subtle transition-all duration-300;
+           hover:border-highlight/35 hover:bg-highlight-light transition-all duration-300;
   }
 
   .tag {
@@ -58,37 +58,111 @@
   }
 
   .hero-grid {
-    background-image: radial-gradient(circle, #d4cfc8 1px, transparent 1px);
-    background-size: 28px 28px;
+    background-image: radial-gradient(circle, #e8e0d4 1px, transparent 1px);
+    background-size: 32px 32px;
   }
-}
 
-.carousel .control-dots .dot {
-  background: #d4cfc8 !important;
-  box-shadow: none !important;
-  opacity: 1 !important;
-}
+  .hero-glow {
+    background: radial-gradient(
+      ellipse 80% 60% at 85% 15%,
+      rgba(184, 148, 95, 0.14),
+      transparent 65%
+    );
+  }
 
-.carousel .control-dots .dot.selected {
-  background: #1a2e35 !important;
-}
+  /* ── Project cards ── */
+  .project-card {
+    @apply relative rounded-2xl border border-border bg-surface overflow-hidden
+           transition-all duration-500 ease-out flex flex-col h-full;
+  }
 
-.carousel .control-arrow {
-  background: rgba(255, 255, 255, 0.95) !important;
-  border-radius: 50% !important;
-  width: 32px !important;
-  height: 32px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  opacity: 0.9 !important;
-  box-shadow: 0 2px 8px rgb(20 20 20 / 0.08) !important;
-}
+  .project-card:hover {
+    @apply border-highlight/30 shadow-card-hover -translate-y-1;
+  }
 
-.carousel .control-arrow:hover {
-  opacity: 1 !important;
-}
+  .project-card__glow {
+    @apply absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500 pointer-events-none;
+    background: linear-gradient(
+      135deg,
+      rgba(184, 148, 95, 0.1) 0%,
+      rgba(26, 24, 22, 0.04) 50%,
+      transparent 100%
+    );
+  }
 
-.carousel .control-prev.control-arrow::before,
-.carousel .control-next.control-arrow::before {
-  border-color: #1a2e35 !important;
+  .project-card:hover .project-card__glow {
+    @apply opacity-100;
+  }
+
+  .project-card__body {
+    @apply p-5 sm:p-6 flex flex-col flex-1;
+  }
+
+  .project-card__index {
+    @apply text-xs font-mono font-medium text-highlight;
+  }
+
+  .project-card__category {
+    @apply text-[10px] font-semibold uppercase tracking-widest text-ink-muted
+           px-2.5 py-1 rounded-full bg-surface-subtle border border-border;
+  }
+
+  .project-card__title {
+    @apply text-lg sm:text-xl font-bold text-ink tracking-tight;
+  }
+
+  .project-card__desc {
+    @apply text-sm text-ink-secondary leading-relaxed mt-2 flex-1;
+  }
+
+  .project-card__link {
+    @apply inline-flex items-center gap-2 mt-5 text-sm font-medium text-ink
+           hover:text-highlight transition-colors duration-300;
+  }
+
+  .project-gallery__viewport {
+    @apply relative w-full flex items-center justify-center overflow-hidden
+           bg-surface-subtle border-b border-border;
+    aspect-ratio: 16 / 10;
+  }
+
+  .project-gallery--featured .project-gallery__viewport {
+    aspect-ratio: 16 / 9;
+  }
+
+  .project-gallery__image {
+    @apply w-full h-full object-contain p-4 sm:p-5 transition-opacity duration-300;
+  }
+
+  .project-gallery__nav {
+    @apply absolute top-1/2 -translate-y-1/2 w-8 h-8 rounded-full
+           flex items-center justify-center
+           bg-surface/95 border border-border text-ink-secondary
+           opacity-0 group-hover:opacity-100 transition-all duration-300
+           hover:border-highlight/40 hover:text-highlight hover:bg-surface shadow-sm;
+  }
+
+  .project-gallery__nav--prev {
+    @apply left-3;
+  }
+
+  .project-gallery__nav--next {
+    @apply right-3;
+  }
+
+  .project-gallery__dots {
+    @apply absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10;
+  }
+
+  .project-gallery__dot {
+    @apply w-1.5 h-1.5 rounded-full bg-border transition-all duration-300;
+  }
+
+  .project-gallery__dot--active {
+    @apply w-5 bg-highlight;
+  }
+
+  .project-gallery__dot:hover {
+    @apply bg-highlight/50;
+  }
 }

@@ -8,7 +8,7 @@ const Education = () => {
         <div data-aos="fade-up">
           <p className="section-label">Academics</p>
           <h2 className="section-title">
-            <span className="text-gold">Education</span>
+            <span className="text-highlight">Education</span>
           </h2>
           <p className="mt-4 text-ink-secondary max-w-2xl text-base leading-relaxed">
             Strong academic foundation in computer applications and information
@@ -24,7 +24,7 @@ const Education = () => {
               data-aos="fade-up"
               data-aos-delay={index * 120}
             >
-              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-accent-light flex items-center justify-center text-accent">
+              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-highlight-light flex items-center justify-center text-highlight">
                 <HiOutlineAcademicCap className="w-6 h-6" />
               </div>
               <div>

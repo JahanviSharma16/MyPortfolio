@@ -18,3 +18,6 @@ export { default as life3 } from "../assets/images/lifeskillify/third.png";
 export { default as weather1 } from "../assets/images/weatherApp/first.png";
 export { default as weather2 } from "../assets/images/weatherApp/second.png";
 export { default as weather3 } from "../assets/images/weatherApp/third.png";
+export { default as bill1 } from "../assets/images/billExtractor/first.png";
+export { default as bill2 } from "../assets/images/billExtractor/second.png";
+export { default as bill3 } from "../assets/images/billExtractor/third.png";

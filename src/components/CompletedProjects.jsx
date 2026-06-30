@@ -1,18 +1,21 @@
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { useState, memo } from "react";
+import { projects } from "../data/projectsData";
 import {
   amazon1,
   amazon2,
   amazon3,
+  bill1,
+  bill2,
+  bill3,
   bubble1,
   bubble2,
   bubble3,
-  image,
-  img2,
-  img3,
-  imgsearch1,
-  imgsearch2,
-  imgsearch3,
+  image as place1,
+  img2 as place2,
+  img3 as place3,
+  imgsearch1 as search1,
+  imgsearch2 as search2,
+  imgsearch3 as search3,
   life1,
   life2,
   life3,
@@ -20,158 +23,210 @@ import {
   weather2,
   weather3,
 } from "../helper/images";
-import { HiOutlineSparkles, HiOutlineArrowTopRightOnSquare } from "react-icons/hi2";
+import {
+  HiOutlineArrowTopRightOnSquare,
+  HiOutlineChevronLeft,
+  HiOutlineChevronRight,
+} from "react-icons/hi2";
+import { FaGithub } from "react-icons/fa6";
 
-const projects = [
-  {
-    id: 1,
-    title: "Life-Skillify",
-    description:
-      "Scalable MERN platform with JWT authentication and RBAC. Optimized REST APIs with secure session handling.",
-    images: [life1, life2, life3],
-    host_link: "https://lifeskillify.vercel.app",
-    tags: ["MERN", "JWT", "RBAC", "REST APIs"],
-  },
-  {
-    id: 2,
-    title: "AI Utility Bill Extraction",
-    description:
-      "Agentic AI platform using React, Node.js, Groq AI, and BullMQ with hybrid OCR workflows for structured bill data extraction.",
-    images: null,
-    host_link: null,
-    tags: ["React", "Groq AI", "BullMQ", "OCR", "Agentic AI"],
-  },
-  {
-    id: 3,
-    title: "Place to Stay",
-    description:
-      "MERN booking platform with filtering, real-time bookings, and reviews.",
-    images: [image, img2, img3],
-    host_link: "https://place-to-stay.netlify.app/",
-    tags: ["MERN", "Booking"],
-  },
-  {
-    id: 4,
-    title: "Bubble Game",
-    description:
-      "Interactive number-matching game built with HTML, CSS, and JavaScript.",
-    images: [bubble1, bubble2, bubble3],
-    host_link: "https://jahanvisharma16.github.io/BubbleGame/",
-    tags: ["HTML", "CSS", "JavaScript"],
-  },
-  {
-    id: 5,
-    title: "Image Search",
-    description:
-      "React app with image API integration for real-time search and display.",
-    images: [imgsearch1, imgsearch2, imgsearch3],
-    host_link: "https://jahanvisharma16.github.io/Image_search/",
-    tags: ["React", "API"],
-  },
-  {
-    id: 6,
-    title: "Weather App",
-    description:
-      "Weather forecast app powered by OpenWeather API with location-based results.",
-    images: [weather1, weather2, weather3],
-    host_link: "https://jahanvisharma16.github.io/WeatherApp/",
-    tags: ["React", "OpenWeather API"],
-  },
-  {
-    id: 7,
-    title: "Amazon Clone",
-    description:
-      "Responsive static replica of Amazon's homepage with styled components.",
-    images: [amazon1, amazon2, amazon3],
-    host_link: "https://jahanvisharma16.github.io/AmazonClone/",
-    tags: ["HTML", "CSS", "Responsive"],
-  },
-];
+const imageMap = {
+  life1,
+  life2,
+  life3,
+  bill1,
+  bill2,
+  bill3,
+  place1,
+  place2,
+  place3,
+  bubble1,
+  bubble2,
+  bubble3,
+  search1,
+  search2,
+  search3,
+  weather1,
+  weather2,
+  weather3,
+  amazon1,
+  amazon2,
+  amazon3,
+};
 
-const ProjectCard = ({ project, index }) => (
-  <article
-    className="card card-hover overflow-hidden flex flex-col h-full"
-    data-aos="fade-up"
-    data-aos-delay={(index % 3) * 80}
-  >
-    <div className="w-full h-48 overflow-hidden">
-      {project.images ? (
-        <Carousel
-          showThumbs={false}
-          showStatus={false}
-          infiniteLoop
-          autoPlay
-          interval={4000}
-          ariaLabel={`Screenshots of ${project.title}`}
-        >
-          {project.images.map((img, index) => (
-            <div key={index} className="relative w-full h-48">
-              <img
-                src={img}
-                alt={`${project.title} screenshot ${index + 1}`}
-                className="w-full h-full object-cover"
-              />
-            </div>
+const ProjectGallery = memo(({ imageKeys, title, featured = false }) => {
+  const images = imageKeys.map((key) => imageMap[key]).filter(Boolean);
+  const [active, setActive] = useState(0);
+
+  if (!images.length) return null;
+
+  const goTo = (dir) => {
+    setActive((prev) => {
+      if (dir === "next") return (prev + 1) % images.length;
+      return (prev - 1 + images.length) % images.length;
+    });
+  };
+
+  return (
+    <div className={`project-gallery group ${featured ? "project-gallery--featured" : ""}`}>
+      <div className="project-gallery__viewport">
+        <img
+          key={active}
+          src={images[active]}
+          alt={`${title} — screenshot ${active + 1}`}
+          className="project-gallery__image"
+          loading="lazy"
+        />
+
+        {images.length > 1 && (
+          <>
+            <button
+              type="button"
+              onClick={() => goTo("prev")}
+              className="project-gallery__nav project-gallery__nav--prev"
+              aria-label="Previous screenshot"
+            >
+              <HiOutlineChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              type="button"
+              onClick={() => goTo("next")}
+              className="project-gallery__nav project-gallery__nav--next"
+              aria-label="Next screenshot"
+            >
+              <HiOutlineChevronRight className="w-4 h-4" />
+            </button>
+          </>
+        )}
+      </div>
+
+      {images.length > 1 && (
+        <div className="project-gallery__dots">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setActive(i)}
+              className={`project-gallery__dot ${i === active ? "project-gallery__dot--active" : ""}`}
+              aria-label={`View screenshot ${i + 1}`}
+            />
           ))}
-        </Carousel>
-      ) : (
-        <div className="w-full h-48 flex items-center justify-center bg-gradient-to-br from-accent-light via-surface-subtle to-gold-light">
-          <div className="text-center p-6">
-            <HiOutlineSparkles className="w-10 h-10 text-accent mx-auto mb-2" />
-            <p className="text-xs font-medium text-ink-secondary tracking-wide uppercase">
-              AI-Powered
-            </p>
-          </div>
         </div>
       )}
     </div>
+  );
+});
 
-    <div className="p-5 sm:p-6 flex flex-col flex-1">
-      <h3 className="text-lg font-bold text-ink">{project.title}</h3>
-      <p className="text-ink-secondary text-sm mt-2 leading-relaxed flex-1">
-        {project.description}
-      </p>
-      <div className="flex flex-wrap gap-1.5 mt-4">
-        {project.tags.map((tag) => (
-          <span key={tag} className="tag">
-            {tag}
-          </span>
-        ))}
+ProjectGallery.displayName = "ProjectGallery";
+
+const ProjectCard = memo(({ project, index }) => {
+  const paddedIndex = String(index + 1).padStart(2, "0");
+
+  return (
+    <article
+      className={`project-card ${project.featured ? "project-card--featured" : ""}`}
+      data-aos="fade-up"
+      data-aos-delay={(index % 3) * 80}
+    >
+      <div className="project-card__glow" aria-hidden="true" />
+
+      <ProjectGallery
+        imageKeys={project.images}
+        title={project.title}
+        featured={project.featured}
+      />
+
+      <div className="project-card__body">
+        <div className="flex items-center justify-between gap-3 mb-3">
+          <span className="project-card__index">{paddedIndex}</span>
+          <span className="project-card__category">{project.category}</span>
+        </div>
+
+        <h3 className="project-card__title">{project.title}</h3>
+        <p className="project-card__desc">{project.description}</p>
+
+        <div className="flex flex-wrap gap-1.5 mt-4">
+          {project.tags.map((tag) => (
+            <span key={tag} className="tag">
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {(project.host_link || project.github_link) && (
+          <div className="flex flex-wrap items-center gap-5 mt-5">
+            {project.host_link && (
+              <a
+                href={project.host_link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-card__link !mt-0"
+              >
+                View Live Project
+                <HiOutlineArrowTopRightOnSquare className="w-4 h-4" />
+              </a>
+            )}
+            {project.github_link && (
+              <a
+                href={project.github_link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-card__link !mt-0"
+              >
+                View on GitHub
+                <FaGithub className="w-4 h-4" />
+              </a>
+            )}
+          </div>
+        )}
       </div>
-      {project.host_link && (
-        <a
-          href={project.host_link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 mt-4 text-sm font-medium text-accent hover:text-gold-dark transition-colors"
-        >
-          View Project
-          <HiOutlineArrowTopRightOnSquare className="w-3.5 h-3.5" />
-        </a>
-      )}
-    </div>
-  </article>
-);
+    </article>
+  );
+});
+
+ProjectCard.displayName = "ProjectCard";
 
 const CompletedProjects = () => {
+  const featured = projects.filter((p) => p.featured);
+  const others = projects.filter((p) => !p.featured);
+
   return (
     <section className="py-20 sm:py-28 bg-surface">
       <div className="section-container">
         <div data-aos="fade-up">
-          <p className="section-label">Portfolio</p>
+          <p className="section-label">03. Work</p>
           <h2 className="section-title">
-            Selected <span className="text-gold">Projects</span>
+            Featured <span className="text-highlight">Work</span>
           </h2>
           <p className="mt-4 text-ink-secondary max-w-2xl text-base leading-relaxed">
-            Full-stack platforms, AI-powered automation, and interactive web
-            experiences — built end to end.
+            Production-grade applications — from enterprise-ready platforms and
+            AI automation to full-stack products shipped end to end.
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
+        <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+          {featured.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
+        </div>
+
+        <div className="mt-14" data-aos="fade-up">
+          <div className="flex items-center gap-4 mb-8">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-ink-muted">
+              More Work
+            </h3>
+            <span className="h-px flex-1 bg-border" />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {others.map((project, index) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={index + featured.length}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

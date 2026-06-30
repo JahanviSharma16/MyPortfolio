@@ -24,7 +24,7 @@ const Skills = () => {
         <div data-aos="fade-up">
           <p className="section-label">Expertise</p>
           <h2 className="section-title">
-            Technical <span className="text-gold">Skills</span>
+            Technical <span className="text-highlight">Skills</span>
           </h2>
           <p className="mt-4 text-ink-secondary max-w-2xl text-base leading-relaxed">
             A versatile toolkit spanning full-stack development, AI integrations,
@@ -41,7 +41,7 @@ const Skills = () => {
               data-aos-delay={index * 80}
             >
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-10 h-10 rounded-xl bg-accent-light flex items-center justify-center text-accent text-lg">
+                <span className="w-10 h-10 rounded-xl bg-highlight-light flex items-center justify-center text-highlight text-lg">
                   {categoryIcons[category.title]}
                 </span>
                 <h3 className="text-base font-bold text-ink">
