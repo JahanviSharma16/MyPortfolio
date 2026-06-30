@@ -1,11 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { HiMenu, HiX } from "react-icons/hi";
+import { personalInfo } from "../data/resumeData";
+
+const navItems = [
+  { label: "Home", key: "home" },
+  { label: "About", key: "about" },
+  { label: "Skills", key: "skills" },
+  { label: "Experience", key: "experience" },
+  { label: "Education", key: "education" },
+  { label: "Projects", key: "projects" },
+  { label: "Contact", key: "contact", isRoute: true },
+];
 
 const Navbar = ({ scrollRefs }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const handleScroll = (refKey) => {
     setIsOpen(false);
@@ -19,77 +37,91 @@ const Navbar = ({ scrollRefs }) => {
   };
 
   return (
-    <nav className="p-6 md:px-28 bg-gradient-to-t from-[#0E0E10] to-black fixed z-50 w-full">
-      <div className="flex items-center justify-between">
-        <h1
-          className="text-white text-xl font-bold cursor-pointer"
-          onClick={() => handleScroll("home")}
-        >
-          Developer
-        </h1>
-
+    <nav
+      className={`fixed z-50 w-full transition-all duration-300 ${
+        scrolled
+          ? "bg-surface/90 backdrop-blur-md shadow-nav border-b border-border"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="section-container py-4 flex items-center justify-between">
         <button
-          className="md:hidden text-white focus:outline-none"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => handleScroll("home")}
+          className="text-lg font-bold text-ink hover:text-accent transition-colors"
         >
-          {isOpen ? <HiX size={28} /> : <HiMenu size={28} />}
+          {personalInfo.firstName}
+          <span className="text-gold">.</span>
         </button>
 
-        <ul className="hidden md:flex items-center gap-10 text-white">
-          <li>
-            <button onClick={() => handleScroll("home")}>Home</button>
-          </li>
-          <li>
-            <button onClick={() => handleScroll("services")}>Service</button>
-          </li>
-          <li>
-            <button onClick={() => handleScroll("projects")}>Projects</button>
-          </li>
-          <li>
-            <button onClick={() => handleScroll("about")}>About</button>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
+        <button
+          className="md:hidden text-ink focus:outline-none p-1"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <HiX size={24} /> : <HiMenu size={24} />}
+        </button>
+
+        <ul className="hidden md:flex items-center gap-8">
+          {navItems.map((item) => (
+            <li key={item.key}>
+              {item.isRoute ? (
+                <Link
+                  to="/contact"
+                  className="text-sm font-medium text-ink-secondary hover:text-accent transition-colors"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <button
+                  onClick={() => handleScroll(item.key)}
+                  className="text-sm font-medium text-ink-secondary hover:text-accent transition-colors"
+                >
+                  {item.label}
+                </button>
+              )}
+            </li>
+          ))}
         </ul>
 
-        <Link
-          to="/contact"
-          className="hidden md:block px-4 py-2 rounded-full bg-gradient-to-l from-customBlue to-customPurple text-white"
-        >
-          Let's Work Together
+        <Link to="/contact" className="hidden md:inline-flex btn-primary text-sm !py-2.5 !px-5">
+          Get in Touch
         </Link>
       </div>
 
       {isOpen && (
-        <ul className="md:hidden mt-4 flex flex-col gap-4 text-white">
-          <li>
-            <button onClick={() => handleScroll("home")}>Home</button>
-          </li>
-          <li>
-            <button onClick={() => handleScroll("services")}>Service</button>
-          </li>
-          <li>
-            <button onClick={() => handleScroll("projects")}>Projects</button>
-          </li>
-          <li>
-            <button onClick={() => handleScroll("about")}>About</button>
-          </li>
-          <li>
-            <Link to="/contact" onClick={() => setIsOpen(false)}>
-              Contact
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/contact"
-              className="block text-center px-4 py-2 rounded-full bg-gradient-to-l from-customBlue to-customPurple text-white"
-              onClick={() => setIsOpen(false)}
-            >
-              Let's Work Together
-            </Link>
-          </li>
-        </ul>
+        <div className="md:hidden bg-surface border-t border-border shadow-nav">
+          <ul className="section-container py-4 flex flex-col gap-1">
+            {navItems.map((item) => (
+              <li key={item.key}>
+                {item.isRoute ? (
+                  <Link
+                    to="/contact"
+                    onClick={() => setIsOpen(false)}
+                    className="block py-2.5 text-sm font-medium text-ink-secondary hover:text-accent"
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <button
+                    onClick={() => handleScroll(item.key)}
+                    className="block w-full text-left py-2.5 text-sm font-medium text-ink-secondary hover:text-accent"
+                  >
+                    {item.label}
+                  </button>
+                )}
+              </li>
+            ))}
+            <li className="pt-2">
+              <Link
+                to="/contact"
+                onClick={() => setIsOpen(false)}
+                className="btn-primary w-full text-center"
+              >
+                Get in Touch
+              </Link>
+            </li>
+          </ul>
+        </div>
       )}
     </nav>
   );

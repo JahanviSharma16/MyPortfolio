@@ -14,7 +14,7 @@ const ContactFormHelper = () => {
   });
 
   const [message, setMessage] = useState("");
-  const [buttonText, setButtonText] = useState("Submit");
+  const [buttonText, setButtonText] = useState("Send Message");
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -25,7 +25,6 @@ const ContactFormHelper = () => {
       [name]: value,
     }));
 
-    // Clear specific field error on change
     setErrors((prevErrors) => ({
       ...prevErrors,
       [name]: "",
@@ -63,7 +62,7 @@ const ContactFormHelper = () => {
       return;
     }
 
-    setButtonText("Submitting...");
+    setButtonText("Sending...");
     const emailData = {
       from_name: formData.name,
       reply_to: formData.email,
@@ -80,100 +79,104 @@ const ContactFormHelper = () => {
       .then(
         () => {
           setMessage("Your message has been sent successfully!");
-          setButtonText("Submitted");
+          setButtonText("Sent!");
           setFormData({ name: "", email: "", help: "" });
-          setTimeout(() => setMessage(""), 5000); // Clear message after 5 seconds
+          setTimeout(() => {
+            setMessage("");
+            setButtonText("Send Message");
+          }, 5000);
         },
         () => {
           setMessage("An error occurred, please try again.");
-          setButtonText("Submit");
+          setButtonText("Send Message");
         }
       );
   };
 
   return (
-    <div className="bg-gradient-to-r from-[#0E0E10] to-black p-6 md:p-10 lg:p-12 rounded">
-      <h2 className="text-2xl 2xl:text-3xl xl:text-2xl lg:text-xl md:text-[16px] font-bold mb-4 md:mb-6">
-        Get in Touch
-      </h2>
-      <form onSubmit={sendEmail} className="space-y-4">
+    <div className="card p-6 sm:p-8">
+      <h3 className="text-lg font-bold text-ink mb-6">Send a Message</h3>
+      <form onSubmit={sendEmail} className="space-y-5">
         <div>
           <label
             htmlFor="name"
-            className="block 2xl:text-md lg:text-sm text-sm font-medium"
+            className="block text-sm font-medium text-ink-secondary mb-1.5"
           >
-            Full Name:
+            Full Name
           </label>
           <input
             type="text"
             name="name"
             id="name"
-            placeholder="Your Full Name"
+            placeholder="Your full name"
             maxLength="50"
             value={formData.name}
             onChange={handleChange}
-            className="mt-1 p-2 w-full bg-grey text-black rounded focus:outline-none focus:ring-2 focus:ring-[#E37931]"
+            className="w-full px-4 py-2.5 bg-surface-subtle border border-border rounded-xl text-ink text-sm placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-colors"
             required
           />
-          {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+          {errors.name && (
+            <p className="text-red-500 text-xs mt-1">{errors.name}</p>
+          )}
         </div>
 
         <div>
           <label
             htmlFor="email"
-            className="block 2xl:text-md lg:text-sm text-sm font-medium"
+            className="block text-sm font-medium text-ink-secondary mb-1.5"
           >
-            Email:
+            Email
           </label>
           <input
             type="email"
             name="email"
             id="email"
-            placeholder="Your Email"
+            placeholder="your@email.com"
             maxLength="55"
             value={formData.email}
             onChange={handleChange}
-            className="mt-1 p-2 w-full bg-grey text-black rounded focus:outline-none focus:ring-2 focus:ring-[#E37931]"
+            className="w-full px-4 py-2.5 bg-surface-subtle border border-border rounded-xl text-ink text-sm placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-colors"
             required
           />
           {errors.email && (
-            <p className="text-red-500 text-sm">{errors.email}</p>
+            <p className="text-red-500 text-xs mt-1">{errors.email}</p>
           )}
         </div>
 
         <div>
           <label
             htmlFor="help"
-            className="block 2xl:text-md lg:text-sm text-sm font-medium"
+            className="block text-sm font-medium text-ink-secondary mb-1.5"
           >
-            How Can I Help?
+            Message
           </label>
           <textarea
             name="help"
             id="help"
-            placeholder="Your Message"
+            placeholder="Tell me about your project or idea..."
             value={formData.help}
             onChange={handleChange}
-            className="mt-1 p-2 w-full bg-grey text-black rounded h-32 focus:outline-none focus:ring-2 focus:ring-[#E37931]"
+            rows={5}
+            className="w-full px-4 py-2.5 bg-surface-subtle border border-border rounded-xl text-ink text-sm placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-colors resize-none"
             required
-          ></textarea>
-          {errors.help && <p className="text-red-500 text-sm">{errors.help}</p>}
+          />
+          {errors.help && (
+            <p className="text-red-500 text-xs mt-1">{errors.help}</p>
+          )}
         </div>
 
-        <div className="flex justify-left">
-          <button
-            type="submit"
-            className="px-6 py-2 2xl:text-md text-sm bg-gradient-to-r from-customBlue to-customPurple rounded-md text-white hover:opacity-90 transition-opacity"
-            disabled={buttonText === "Submitting..."}
-          >
-            {buttonText}
-          </button>
-        </div>
+        <button
+          type="submit"
+          className="btn-primary w-full sm:w-auto"
+          disabled={buttonText === "Sending..."}
+        >
+          {buttonText}
+        </button>
 
         {message && (
           <p
-            className={`text-center text-lg mt-4 ${
-              message.includes("error") ? "text-red-500" : "text-green-500"
+            className={`text-sm mt-2 ${
+              message.includes("error") ? "text-red-500" : "text-emerald-600"
             }`}
           >
             {message}

@@ -1,34 +1,84 @@
+import { useLocation } from "react-router-dom";
 import ContactFormHelper from "../helper/ContactFormHelper";
+import { personalInfo } from "../data/resumeData";
+import {
+  HiOutlineEnvelope,
+  HiOutlineMapPin,
+  HiOutlinePhone,
+} from "react-icons/hi2";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 
 const Contact = () => {
+  const location = useLocation();
+  const isStandalone = location.pathname === "/contact";
+
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 py-28 md:py-36 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 text-white font-BaiJamjureeRegular">
-      
-      {/* 🔹 Left Section: Text Info */}
-      <div className="flex flex-col justify-center">
-        <h2 className="text-[1.75rem] sm:text-[2rem] md:text-[2.5rem] lg:text-[3rem] 2xl:text-[3.5rem] font-BaiJamjureeBold font-bold bg-gradient-to-b from-white via-white/70 to-white/0 bg-clip-text text-transparent leading-tight">
-          LET’S CONNECT,
-          <span className="block">I’D LOVE TO HEAR FROM YOU</span>
-        </h2>
+    <section className={`py-20 sm:py-28 ${isStandalone ? "pt-32" : ""}`}>
+      <div className="section-container">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <div data-aos="fade-right">
+            <p className="section-label">Contact</p>
+            <h2 className="section-title">
+              Let&apos;s <span className="text-gold">Connect</span>
+            </h2>
+            <p className="mt-4 text-ink-secondary text-base leading-relaxed max-w-md">
+              Have a project in mind or want to discuss an opportunity? I&apos;d
+              love to hear from you. Drop a message and I&apos;ll get back to you
+              promptly.
+            </p>
 
-        <p className="pt-6 text-base sm:text-lg text-gray-300 max-w-xl leading-relaxed">
-          Have a project in mind or just want to say hello? Feel free to reach out! 
-          I’m always excited to collaborate and explore new opportunities.
-        </p>
+            <div className="mt-8 space-y-4">
+              <a
+                href={`mailto:${personalInfo.email}`}
+                className="flex items-center gap-3 text-ink-secondary hover:text-accent transition-colors group"
+              >
+                <span className="w-10 h-10 rounded-xl bg-accent-light flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-colors">
+                  <HiOutlineEnvelope className="w-5 h-5" />
+                </span>
+                <span className="text-sm">{personalInfo.email}</span>
+              </a>
+              <div className="flex items-center gap-3 text-ink-secondary">
+                <span className="w-10 h-10 rounded-xl bg-accent-light flex items-center justify-center text-accent">
+                  <HiOutlinePhone className="w-5 h-5" />
+                </span>
+                <span className="text-sm">{personalInfo.phone}</span>
+              </div>
+              <div className="flex items-center gap-3 text-ink-secondary">
+                <span className="w-10 h-10 rounded-xl bg-accent-light flex items-center justify-center text-accent">
+                  <HiOutlineMapPin className="w-5 h-5" />
+                </span>
+                <span className="text-sm">{personalInfo.location}</span>
+              </div>
+            </div>
 
-        <a
-          href="mailto:jahanvisharma16@gmail.com"
-          className="pt-4 text-sm sm:text-base text-gray-400 underline hover:text-gray-200 transition-colors duration-200"
-        >
-          jahanvisharma16@gmail.com
-        </a>
+            <div className="flex items-center gap-3 mt-8">
+              <a
+                href={personalInfo.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-xl border border-border flex items-center justify-center text-ink-secondary hover:border-accent hover:text-accent transition-colors"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedinIn className="w-4 h-4" />
+              </a>
+              <a
+                href={personalInfo.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-xl border border-border flex items-center justify-center text-ink-secondary hover:border-accent hover:text-accent transition-colors"
+                aria-label="GitHub"
+              >
+                <FaGithub className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+
+          <div data-aos="fade-left" data-aos-delay="100">
+            <ContactFormHelper />
+          </div>
+        </div>
       </div>
-
-      {/* 🔹 Right Section: Form */}
-      <div className="w-full max-w-xl mx-auto lg:mx-0">
-        <ContactFormHelper />
-      </div>
-    </div>
+    </section>
   );
 };
 

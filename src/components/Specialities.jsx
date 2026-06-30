@@ -1,86 +1,69 @@
-import { FaReact, FaDatabase } from "react-icons/fa";
-import { FaNode, FaRobot } from "react-icons/fa6";
-import { MdApi } from "react-icons/md";
-import { RiNodeTree } from "react-icons/ri";
+import { skillCategories } from "../data/resumeData";
+import {
+  FaReact,
+  FaDatabase,
+  FaRobot,
+  FaCloud,
+  FaTools,
+} from "react-icons/fa";
+import { FaNode } from "react-icons/fa6";
 
-const Specialities = () => {
-  const specialties = [
-    {
-      id: 1,
-      heading: "Frontend Development",
-      description:
-        "Crafting dynamic user interfaces with React and Vue, ensuring responsive and engaging user experiences.",
-      icon: <FaReact />,
-    },
-    {
-      id: 2,
-      heading: "Backend Development",
-      description:
-        "Building scalable server-side architectures using Node.js and Django for seamless data handling.",
-      icon: <FaNode />,
-    },
-    {
-      id: 3,
-      heading: "Database Management",
-      description:
-        "Designing efficient SQL and NoSQL schemas to optimize queries and maintain data integrity.",
-      icon: <FaDatabase />,
-    },
-    {
-      id: 4,
-      heading: "API Development & Collaboration",
-      description:
-        "Creating secure and robust APIs for system communication and integrating third-party services.",
-      icon: <MdApi />,
-    },
-    {
-      id: 5,
-      heading: "Full Stack Development",
-      description:
-        "Delivering end-to-end solutions by bridging frontend and backend for cohesive applications.",
-      icon: <RiNodeTree />,
-    },
-    {
-      id: 6,
-      heading: "Tool Bots",
-      description:
-        "Automating workflows with custom bots to enhance productivity and minimize manual tasks.",
-      icon: <FaRobot />,
-    },
-  ];
+const categoryIcons = {
+  Frontend: <FaReact />,
+  Backend: <FaNode />,
+  "AI & Automation": <FaRobot />,
+  Databases: <FaDatabase />,
+  "Cloud & DevOps": <FaCloud />,
+  "Tools & Languages": <FaTools />,
+};
 
+const Skills = () => {
   return (
-    <section className="text-center px-4 py-20">
-      <p className="text-gray-400 text-sm">SPECIALITY</p>
-      <h1 className="text-white text-3xl sm:text-4xl font-semibold py-3">
-        My <span className="text-customBlue">Specialities</span>
-      </h1>
-      <p className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
-        As a seasoned developer, I excel in various domains, ensuring robust
-        solutions tailored to meet diverse challenges. Here is how I can
-        contribute:
-      </p>
+    <section className="py-20 sm:py-28 bg-surface">
+      <div className="section-container">
+        <div data-aos="fade-up">
+          <p className="section-label">Expertise</p>
+          <h2 className="section-title">
+            Technical <span className="text-gold">Skills</span>
+          </h2>
+          <p className="mt-4 text-ink-secondary max-w-2xl text-base leading-relaxed">
+            A versatile toolkit spanning full-stack development, AI integrations,
+            and production-grade DevOps.
+          </p>
+        </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-12">
-        {specialties.map((specialty) => (
-          <div
-            key={specialty.id}
-            className="px-6 py-6 rounded-xl bg-gradient-to-r from-[#0E0E10] to-black shadow-md flex flex-col items-center text-center transition duration-300 hover:shadow-[0_0_30px_#194BFD]"
-          >
-            <span className="p-4 text-4xl text-customBlue">
-              {specialty.icon}
-            </span>
-            <h2 className="text-xl sm:text-2xl text-white font-bold mt-4">
-              {specialty.heading}
-            </h2>
-            <p className="text-gray-400 mt-4 text-sm sm:text-base">
-              {specialty.description}
-            </p>
-          </div>
-        ))}
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {skillCategories.map((category, index) => (
+            <div
+              key={category.title}
+              className="card card-hover p-6 flex flex-col"
+              data-aos="fade-up"
+              data-aos-delay={index * 80}
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <span className="w-10 h-10 rounded-xl bg-accent-light flex items-center justify-center text-accent text-lg">
+                  {categoryIcons[category.title]}
+                </span>
+                <h3 className="text-base font-bold text-ink">
+                  {category.title}
+                </h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-2.5 py-1 text-xs font-medium rounded-lg bg-surface-subtle text-ink-secondary border border-border-light"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
 };
 
-export default Specialities;
+export default Skills;

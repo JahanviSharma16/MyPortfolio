@@ -1,4 +1,16 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { personalInfo } from "../data/resumeData";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
+import { HiOutlineEnvelope, HiOutlinePhone } from "react-icons/hi2";
+
+const footerLinks = [
+  { name: "Home", key: "home" },
+  { name: "About", key: "about" },
+  { name: "Skills", key: "skills" },
+  { name: "Experience", key: "experience" },
+  { name: "Education", key: "education" },
+  { name: "Projects", key: "projects" },
+];
 
 const Footer = ({ scrollRefs }) => {
   const location = useLocation();
@@ -14,90 +26,98 @@ const Footer = ({ scrollRefs }) => {
   };
 
   return (
-    <footer className="bg-gradient-to-b from-[#0E0E10] to-black text-gray-300 px-6 md:px-20 lg:px-28 py-10 font-BaiJamjureeRegular">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
-        <div>
-          <h3 className="font-semibold mb-3 text-lg">Quick Access</h3>
-          <ul className="space-y-2 text-sm">
-            {[
-              { name: "Home", key: "home" },
-              { name: "Service", key: "services" },
-              { name: "Projects", key: "projects" },
-              { name: "About", key: "about" },
-              { name: "Contact", link: "/contact" },
-            ].map((item, idx) => (
-              <li key={idx}>
-                {item.link ? (
-                  <a href={item.link} className="hover:underline">
-                    {item.name}
-                  </a>
-                ) : (
+    <footer className="bg-ink text-white" data-aos="fade-up">
+      <div className="section-container py-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          <div className="lg:col-span-2">
+            <h3 className="text-xl font-bold">
+              {personalInfo.firstName}
+              <span className="text-gold">.</span>
+            </h3>
+            <p className="mt-3 text-sm text-slate-400 leading-relaxed max-w-md">
+              {personalInfo.title} building scalable MERN applications, AI-powered
+              solutions, and workflow automation. Based in {personalInfo.location}.
+            </p>
+            <div className="flex items-center gap-4 mt-5">
+              <a
+                href={personalInfo.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-gold/80 transition-colors"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedinIn className="w-4 h-4" />
+              </a>
+              <a
+                href={personalInfo.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-gold/80 transition-colors"
+                aria-label="GitHub"
+              >
+                <FaGithub className="w-4 h-4" />
+              </a>
+              <a
+                href={`mailto:${personalInfo.email}`}
+                className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-gold/80 transition-colors"
+                aria-label="Email"
+              >
+                <HiOutlineEnvelope className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4">
+              Navigation
+            </h4>
+            <ul className="space-y-2.5">
+              {footerLinks.map((item) => (
+                <li key={item.key}>
                   <button
                     onClick={() => handleScroll(item.key)}
-                    className="hover:underline text-left"
+                    className="text-sm text-slate-300 hover:text-white transition-colors"
                   >
                     {item.name}
                   </button>
-                )}
+                </li>
+              ))}
+              <li>
+                <Link
+                  to="/contact"
+                  className="text-sm text-slate-300 hover:text-white transition-colors"
+                >
+                  Contact
+                </Link>
               </li>
-            ))}
-          </ul>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4">
+              Contact
+            </h4>
+            <ul className="space-y-3 text-sm text-slate-300">
+              <li>
+                <a
+                  href={`mailto:${personalInfo.email}`}
+                  className="flex items-center gap-2 hover:text-white transition-colors"
+                >
+                  <HiOutlineEnvelope className="w-4 h-4 text-gold" />
+                  {personalInfo.email}
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <HiOutlinePhone className="w-4 h-4 text-gold" />
+                {personalInfo.phone}
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div>
-          <h3 className="font-semibold mb-3 text-lg">Follow Me On</h3>
-          <ul className="space-y-2 text-sm">
-            <li>
-              <a
-                href="https://www.linkedin.com/in/jahanvi-sharma-a6985823a/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:underline"
-              >
-                LinkedIn
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://github.com/JahanviSharma16"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:underline"
-              >
-                Github
-              </a>
-            </li>
-            <li>
-              <a
-                href="mailto:jahanvisharma16@gmail.com"
-                className="hover:underline"
-              >
-                Email
-              </a>
-            </li>
-          </ul>
+        <div className="mt-12 pt-6 border-t border-white/10 text-center text-xs text-slate-500">
+          &copy; {new Date().getFullYear()} {personalInfo.name}. All rights reserved.
         </div>
-
-        <div className="md:col-span-2">
-          <p className="text-sm leading-relaxed">
-            Delivering top-notch websites, interactive UI/UX designs, and
-            scalable applications using modern frameworks like React, Node.js,
-            and more.
-          </p>
-          <p className="mt-4 text-sm">
-            <a
-              href="mailto:jahanvisharma16@gmail.com"
-              className="hover:underline"
-            >
-              jahanvisharma16@gmail.com
-            </a>
-          </p>
-         {/* <p className="mt-2 text-sm hover:underline">+91 8218512192</p> */}
-        </div>
-      </div>
-
-      <div className="text-center text-xs mt-10 border-t border-gray-700 pt-4">
-        © 2025 Web Developer. All rights reserved.
       </div>
     </footer>
   );

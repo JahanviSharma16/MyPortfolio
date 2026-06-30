@@ -19,115 +19,162 @@ import {
   weather1,
   weather2,
   weather3,
-} from "../helper/images"; 
+} from "../helper/images";
+import { HiOutlineSparkles, HiOutlineArrowTopRightOnSquare } from "react-icons/hi2";
 
-const projectDetails = [
+const projects = [
   {
     id: 1,
-    title: "LifeSkillify",
+    title: "Life-Skillify",
     description:
-      "A full-stack learning platform offering daily life skills lessons with user authentication and responsive UI.",
+      "Scalable MERN platform with JWT authentication and RBAC. Optimized REST APIs with secure session handling.",
     images: [life1, life2, life3],
-    host_link: "https://life-skillify.vercel.app/",
+    host_link: "https://lifeskillify.vercel.app",
+    tags: ["MERN", "JWT", "RBAC", "REST APIs"],
   },
   {
     id: 2,
-    title: "Place to Stay",
+    title: "AI Utility Bill Extraction",
     description:
-      "A MERN stack website for booking accommodations with filtering, real-time bookings, and reviews.",
-    images: [image, img2, img3],
-    host_link: "https://place-to-stay.netlify.app/",
+      "Agentic AI platform using React, Node.js, Groq AI, and BullMQ with hybrid OCR workflows for structured bill data extraction.",
+    images: null,
+    host_link: null,
+    tags: ["React", "Groq AI", "BullMQ", "OCR", "Agentic AI"],
   },
   {
     id: 3,
-    title: "Bubble Game",
+    title: "Place to Stay",
     description:
-      "A number-matching game built using HTML, CSS, and JavaScript to enhance user reflex and fun.",
-    images: [bubble1, bubble2, bubble3],
-    host_link: "https://jahanvisharma16.github.io/BubbleGame/",
+      "MERN booking platform with filtering, real-time bookings, and reviews.",
+    images: [image, img2, img3],
+    host_link: "https://place-to-stay.netlify.app/",
+    tags: ["MERN", "Booking"],
   },
   {
     id: 4,
-    title: "Image Search",
+    title: "Bubble Game",
     description:
-      "A React-based app using an image API to search and display images in real-time.",
-    images: [imgsearch1, imgsearch2, imgsearch3],
-    host_link: "https://jahanvisharma16.github.io/Image_search/",
+      "Interactive number-matching game built with HTML, CSS, and JavaScript.",
+    images: [bubble1, bubble2, bubble3],
+    host_link: "https://jahanvisharma16.github.io/BubbleGame/",
+    tags: ["HTML", "CSS", "JavaScript"],
   },
   {
     id: 5,
-    title: "Weather App",
+    title: "Image Search",
     description:
-      "A simple weather forecast app using OpenWeather API to display current weather by location.",
-    images: [weather1, weather2, weather3 ],
-    host_link: "https://jahanvisharma16.github.io/WeatherApp/",
+      "React app with image API integration for real-time search and display.",
+    images: [imgsearch1, imgsearch2, imgsearch3],
+    host_link: "https://jahanvisharma16.github.io/Image_search/",
+    tags: ["React", "API"],
   },
   {
     id: 6,
+    title: "Weather App",
+    description:
+      "Weather forecast app powered by OpenWeather API with location-based results.",
+    images: [weather1, weather2, weather3],
+    host_link: "https://jahanvisharma16.github.io/WeatherApp/",
+    tags: ["React", "OpenWeather API"],
+  },
+  {
+    id: 7,
     title: "Amazon Clone",
     description:
-      "A static replica of Amazon's homepage with styled components, sections, and responsive design.",
+      "Responsive static replica of Amazon's homepage with styled components.",
     images: [amazon1, amazon2, amazon3],
     host_link: "https://jahanvisharma16.github.io/AmazonClone/",
+    tags: ["HTML", "CSS", "Responsive"],
   },
 ];
 
-const CompletedProjects = () => {
-  return (
-    <div className="text-center py-10 px-4 sm:px-8 md:px-12 lg:px-20">
-      <p className="text-gray-400 uppercase">Portfolio</p>
-      <h1 className="text-white text-4xl font-bold py-3">
-        My <span className="text-customBlue">Projects</span>
-      </h1>
-      <p className="text-gray-400 max-w-2xl mx-auto">
-        As a seasoned developer, I excel in various domains, ensuring robust
-        solutions tailored to meet diverse challenges. Here’s how I can
-        contribute:
-      </p>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pt-10">
-        {projectDetails.map((project) => (
-          <div
-            key={project.id}
-            className="bg-gradient-to-r from-[#0E0E10] to-black rounded-xl shadow-lg p-5 text-white flex flex-col items-center hover:shadow-[0_0_30px_#194BFD] transition duration-300"
-          >
-            <div className="w-full h-52 rounded overflow-hidden">
-              <Carousel
-                showThumbs={false}
-                showStatus={false}
-                infiniteLoop
-                autoPlay
-                interval={3000}
-                className="rounded"
-                ariaLabel={`Screenshots of ${project.title}`}
-              >
-                {project.images.map((img, index) => (
-                  <div key={index} className="relative w-full h-52">
-                    <img
-                      src={img}
-                      alt={`${project.title} screenshot ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                ))}
-              </Carousel>
+const ProjectCard = ({ project, index }) => (
+  <article
+    className="card card-hover overflow-hidden flex flex-col h-full"
+    data-aos="fade-up"
+    data-aos-delay={(index % 3) * 80}
+  >
+    <div className="w-full h-48 overflow-hidden">
+      {project.images ? (
+        <Carousel
+          showThumbs={false}
+          showStatus={false}
+          infiniteLoop
+          autoPlay
+          interval={4000}
+          ariaLabel={`Screenshots of ${project.title}`}
+        >
+          {project.images.map((img, index) => (
+            <div key={index} className="relative w-full h-48">
+              <img
+                src={img}
+                alt={`${project.title} screenshot ${index + 1}`}
+                className="w-full h-full object-cover"
+              />
             </div>
-            <h3 className="text-2xl font-semibold mt-4 text-customBlue">
-              {project.title}
-            </h3>
-            <p className="text-gray-400 mt-2 text-sm">{project.description}</p>
-            <a
-              href={project.host_link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-block px-4 py-2 bg-customBlue text-white rounded-lg hover:bg-blue-600 transition duration-200"
-            >
-              Visit Project
-            </a>
+          ))}
+        </Carousel>
+      ) : (
+        <div className="w-full h-48 flex items-center justify-center bg-gradient-to-br from-accent-light via-surface-subtle to-gold-light">
+          <div className="text-center p-6">
+            <HiOutlineSparkles className="w-10 h-10 text-accent mx-auto mb-2" />
+            <p className="text-xs font-medium text-ink-secondary tracking-wide uppercase">
+              AI-Powered
+            </p>
           </div>
+        </div>
+      )}
+    </div>
+
+    <div className="p-5 sm:p-6 flex flex-col flex-1">
+      <h3 className="text-lg font-bold text-ink">{project.title}</h3>
+      <p className="text-ink-secondary text-sm mt-2 leading-relaxed flex-1">
+        {project.description}
+      </p>
+      <div className="flex flex-wrap gap-1.5 mt-4">
+        {project.tags.map((tag) => (
+          <span key={tag} className="tag">
+            {tag}
+          </span>
         ))}
       </div>
+      {project.host_link && (
+        <a
+          href={project.host_link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 mt-4 text-sm font-medium text-accent hover:text-gold-dark transition-colors"
+        >
+          View Project
+          <HiOutlineArrowTopRightOnSquare className="w-3.5 h-3.5" />
+        </a>
+      )}
     </div>
+  </article>
+);
+
+const CompletedProjects = () => {
+  return (
+    <section className="py-20 sm:py-28 bg-surface">
+      <div className="section-container">
+        <div data-aos="fade-up">
+          <p className="section-label">Portfolio</p>
+          <h2 className="section-title">
+            Selected <span className="text-gold">Projects</span>
+          </h2>
+          <p className="mt-4 text-ink-secondary max-w-2xl text-base leading-relaxed">
+            Full-stack platforms, AI-powered automation, and interactive web
+            experiences — built end to end.
+          </p>
+        </div>
+
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index} />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 

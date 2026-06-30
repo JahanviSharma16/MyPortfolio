@@ -2,23 +2,32 @@ import { Outlet, useLocation } from "react-router-dom";
 import { useRef } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import useAOS from "../helper/useAOS";
 
 const MainLayout = () => {
   const location = useLocation();
+  useAOS();
 
-  // Define refs only if we're on the home page
-  const servicesRef = useRef(null);
-  const projectsRef = useRef(null);
+  const homeRef = useRef(null);
   const aboutRef = useRef(null);
+  const skillsRef = useRef(null);
+  const experienceRef = useRef(null);
+  const educationRef = useRef(null);
+  const projectsRef = useRef(null);
+  const contactRef = useRef(null);
 
   const scrollRefs = {
-    services: servicesRef,
-    projects: projectsRef,
+    home: homeRef,
     about: aboutRef,
+    skills: skillsRef,
+    experience: experienceRef,
+    education: educationRef,
+    projects: projectsRef,
+    contact: contactRef,
   };
 
   return (
-    <div className="bg-black text-white overflow-hidden">
+    <div className="bg-surface-muted text-ink overflow-hidden min-h-screen">
       <Navbar scrollRefs={scrollRefs} />
       <main>
         {location.pathname === "/" ? (
@@ -27,7 +36,7 @@ const MainLayout = () => {
           <Outlet />
         )}
       </main>
-      <Footer />
+      <Footer scrollRefs={scrollRefs} />
     </div>
   );
 };
