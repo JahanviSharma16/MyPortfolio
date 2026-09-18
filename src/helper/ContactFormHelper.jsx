@@ -116,7 +116,7 @@ const ContactFormHelper = () => {
             required
           />
           {errors.name && (
-            <p className="text-red-500 text-xs mt-1">{errors.name}</p>
+            <p className="text-red-400 text-xs mt-1">{errors.name}</p>
           )}
         </div>
 
@@ -139,7 +139,7 @@ const ContactFormHelper = () => {
             required
           />
           {errors.email && (
-            <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+            <p className="text-red-400 text-xs mt-1">{errors.email}</p>
           )}
         </div>
 
@@ -161,7 +161,7 @@ const ContactFormHelper = () => {
             required
           />
           {errors.help && (
-            <p className="text-red-500 text-xs mt-1">{errors.help}</p>
+            <p className="text-red-400 text-xs mt-1">{errors.help}</p>
           )}
         </div>
 
@@ -176,7 +176,7 @@ const ContactFormHelper = () => {
         {message && (
           <p
             className={`text-sm mt-2 ${
-              message.includes("error") ? "text-red-500" : "text-emerald-600"
+              message.includes("error") ? "text-red-400" : "text-emerald-400"
             }`}
           >
             {message}

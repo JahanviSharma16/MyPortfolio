@@ -25,7 +25,7 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center pt-24 pb-16 lg:pb-20 overflow-hidden">
       <div className="absolute inset-0 -z-10 hero-grid opacity-30" />
       <div className="absolute inset-0 -z-10 hero-glow" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-surface-muted via-surface-muted/90 to-[#F5F0E8]" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-surface-muted via-accent-light to-surface-subtle" />
 
       <div className="section-container w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">

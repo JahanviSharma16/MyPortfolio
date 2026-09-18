@@ -14,7 +14,7 @@
   }
 
   ::selection {
-    @apply bg-highlight/20 text-ink;
+    @apply bg-highlight/35 text-ink;
   }
 }
 
@@ -36,20 +36,20 @@
   }
 
   .card-hover {
-    @apply hover:shadow-card-hover hover:border-highlight/25 hover:-translate-y-0.5;
+    @apply hover:shadow-card-hover hover:border-highlight/20 hover:-translate-y-0.5;
   }
 
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full
-           bg-accent text-white font-medium text-sm tracking-wide
-           shadow-sm hover:bg-accent-dark transition-all duration-300
+           bg-highlight text-white font-medium text-sm tracking-wide
+           shadow-sm hover:brightness-110 transition-all duration-300
            hover:shadow-md active:scale-[0.98];
   }
 
   .btn-secondary {
     @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full
            bg-surface text-ink font-medium text-sm border border-border
-           hover:border-highlight/35 hover:bg-highlight-light transition-all duration-300;
+           hover:border-highlight/30 hover:bg-surface-subtle transition-all duration-300;
   }
 
   .tag {
@@ -58,14 +58,14 @@
   }
 
   .hero-grid {
-    background-image: radial-gradient(circle, #e8e0d4 1px, transparent 1px);
+    background-image: radial-gradient(circle, #1E2538 1px, transparent 1px);
     background-size: 32px 32px;
   }
 
   .hero-glow {
     background: radial-gradient(
-      ellipse 80% 60% at 85% 15%,
-      rgba(184, 148, 95, 0.14),
+      ellipse 70% 55% at 80% 10%,
+      rgba(99, 102, 241, 0.12),
       transparent 65%
     );
   }
@@ -77,15 +77,15 @@
   }
 
   .project-card:hover {
-    @apply border-highlight/30 shadow-card-hover -translate-y-1;
+    @apply border-highlight/25 shadow-card-hover -translate-y-1;
   }
 
   .project-card__glow {
     @apply absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500 pointer-events-none;
     background: linear-gradient(
       135deg,
-      rgba(184, 148, 95, 0.1) 0%,
-      rgba(26, 24, 22, 0.04) 50%,
+      rgba(129, 140, 248, 0.08) 0%,
+      rgba(255, 255, 255, 0.02) 50%,
       transparent 100%
     );
   }
